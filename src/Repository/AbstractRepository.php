@@ -2,20 +2,16 @@
 
 namespace Repository;
 
-use config\Database\DatabaseConnection;
+use Config\Database\DatabaseConnection;
 use Logger\Logger;
 
 abstract class AbstractRepository
 {
     protected \PDO $connection;
 
-    public function __construct()
+    public function __construct(\PDO $connection)
     {
-        try {
-            $this->connection = (new DatabaseConnection())->createConnection();
-        } catch (\PDOException $e) {
-            Logger::log($e->getMessage(), Logger::EMERGENCY);
-        }
+        $this->connection = $connection;
     }
 
     /**
@@ -36,7 +32,7 @@ abstract class AbstractRepository
      * @return array
      * @throws \PDOException
      */
-    protected function findBy(string $table, array $conditions): array
+    public function findBy(string $table, array $conditions): array
     {
         try {
             $query = sprintf(
@@ -57,7 +53,7 @@ abstract class AbstractRepository
      * @param array $record
      * @return void
      */
-    protected function addRecord(string $table, array $record): void
+    public function addRecord(string $table, array $record): void
     {
         try {
             $query = sprintf(
@@ -71,6 +67,21 @@ abstract class AbstractRepository
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
+    }
+
+    /**
+     * @return \PDO
+     */
+    protected function initializeConnection(): \PDO
+    {
+        try {
+            $pdo = (new DatabaseConnection())->createConnection();
+            var_dump($pdo);
+        } catch (\PDOException $e) {
+
+            Logger::log($e->getMessage(), Logger::EMERGENCY);
+        }
+        return $pdo;
     }
 
 

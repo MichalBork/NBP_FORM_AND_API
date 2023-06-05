@@ -2,8 +2,7 @@
 
 namespace Controller;
 
-use Response\ResponseFactoryInterface;
-use Response\ResponseInterface;
+use http\Response\ResponseFactoryInterface;
 
 
 class MyController extends AbstractController
@@ -21,7 +20,7 @@ class MyController extends AbstractController
             ['Content-Type' => 'text/html'],
             ['message' => 'Hello World!']
         );
-        $this->returnJson($response);
+        $this->returnTemplate("index.html");
     }
 
 

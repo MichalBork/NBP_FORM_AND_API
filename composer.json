@@ -2,7 +2,9 @@
   "require": {
     "ext-pdo": "*",
     "psr/http-message": "^2.0",
-    "psr/http-factory": "^1.0"
+    "psr/http-factory": "^1.0",
+    "psr/http-client": "^1.0",
+    "guzzlehttp/guzzle": "^7.7"
   },
   "autoload": {
     "psr-4": {
@@ -10,8 +12,11 @@
       "Config\\": "config/",
       "Logger\\": "src/Logger/",
       "Trait\\": "src/Trait/",
-      "Response\\": "src/Response/",
-      "Controller\\": "src/Controller/"
+      "Http\\": "src/Http/",
+      "Controller\\": "src/Controller/",
+      "Service\\": "src/Service/",
+      "Entity\\": "src/Entity/",
+      "Repository\\": "src/Repository/"
     }
   }
 }

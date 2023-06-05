@@ -3,8 +3,8 @@
 namespace Controller;
 
 
-use Response\Response;
-use Response\ResponseFactoryInterface;
+use http\Response\Response;
+use http\Response\ResponseFactoryInterface;
 
 abstract class AbstractController
 {
@@ -22,5 +22,11 @@ abstract class AbstractController
             header(sprintf('%s: %s', $name, $value));
         }
         echo json_encode($response->getBody());
+    }
+
+    protected function returnTemplate(string $templateName): void
+    {
+        $template = file_get_contents(__DIR__ . '/../../templates/' . $templateName);
+        echo $template;
     }
 }

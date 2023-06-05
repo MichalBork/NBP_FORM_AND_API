@@ -47,7 +47,6 @@ class DatabaseConnection implements DatabasePDOInterface
                 && isset($this->dbConfig['user'])
                 && isset($this->dbConfig['password']);
         }
-
     }
 
 }
