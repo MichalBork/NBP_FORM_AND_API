@@ -24,8 +24,18 @@ class TransactionService
     }
 
 
+    /**
+     * @throws \Exception
+     */
     public function addNewTransaction(array $param): void
     {
+        try {
+            $this->validateTransaction($param);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+
         $selectedCurrency = $this->currencyRepository->getSpecificCurrencyByDate(
             $param['selectedCurrency'],
             (new \DateTime("midnight"))->getTimestamp()
@@ -60,5 +70,38 @@ class TransactionService
     {
         return round($amountInPLN / $expectedCurrency[0]['buy_value']);
     }
+
+    private function validateTransaction(array $param): void
+    {
+        if (!isset($param['selectedCurrency']) || !isset($param['selectedCurrencyAmount']) || !isset($param['expectedCurrency'])) {
+            throw new \InvalidArgumentException('Invalid transaction data');
+        }
+
+        if (!is_numeric($param['selectedCurrencyAmount']) || $param['selectedCurrencyAmount'] <= 0) {
+            throw new \InvalidArgumentException('Invalid transaction amount');
+        }
+
+
+        if ($this->isCurrencyCorrectSelected($param['selectedCurrency']) || $this->isCurrencyCorrectSelected(
+                $param['expectedCurrency']
+            )) {
+            throw new \InvalidArgumentException('Invalid selected currency');
+        }
+    }
+
+    /**
+     * @param $selectedCurrency
+     * @return bool
+     */
+    private function isCurrencyCorrectSelected($selectedCurrency): bool
+    {
+        return !in_array(
+            $selectedCurrency,
+            array_map(function ($currency) {
+                return $currency['code'];
+            }, $this->currencyRepository->getAvailableCurrencyCodes())
+        );
+    }
+
 
 }
