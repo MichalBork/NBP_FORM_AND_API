@@ -16,4 +16,12 @@ class CurrencyRepository extends AbstractRepository
     {
         return $this->findBy(Currency::TABLE_NAME, ['code' => $code, 'date' => $date]);
     }
+
+    public function getAvailableCurrencyCodes(): array
+    {
+        $sql = "SELECT DISTINCT code FROM Currencies";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

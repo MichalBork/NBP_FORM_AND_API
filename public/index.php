@@ -10,7 +10,7 @@ Router::addRoute('/', \Controller\CurrencyController::class, "index");
 Router::addRoute('/transaction', \Controller\TransactionController::class, "index");
 Router::addRoute('/get-transactions', \Controller\TransactionController::class, "getAllTransactionForToday");
 Router::addRoute('/add-transaction', \Controller\TransactionController::class, "addNewTransaction");
-
+Router::addRoute('/get-available-currency-codes', \Controller\CurrencyController::class, "getAvailableCurrencyCodes");
 
 Router::handleRequest($_SERVER["REQUEST_URI"], setParamForAction());
 

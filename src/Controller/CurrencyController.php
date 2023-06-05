@@ -37,4 +37,17 @@ class CurrencyController extends AbstractController
         );
     }
 
+    public function getAvailableCurrencyCodes(): void
+    {
+        $this->returnJson(
+            $this->responseFactory->createResponse(
+                200,
+                ['Content-Type' => 'application/json'],
+                [
+                    'data' => $this->currencyService->getAvailableCurrencyCodes()
+                ]
+            )
+        );
+    }
+
 }

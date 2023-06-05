@@ -85,4 +85,9 @@ class CurrencyService
         return $currencyList;
     }
 
+    public function getAvailableCurrencyCodes(): array
+    {
+        return $this->currencyRepository->getAvailableCurrencyCodes();
+    }
+
 }

@@ -58,7 +58,7 @@ class TransactionService
 
     private function swapPLNToExpectedCurrencyAmount(array $expectedCurrency, int $amountInPLN): int
     {
-        return $amountInPLN / $expectedCurrency[0]['buy_value'];
+        return round($amountInPLN / $expectedCurrency[0]['buy_value']);
     }
 
 }
