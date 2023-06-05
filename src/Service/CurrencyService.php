@@ -75,4 +75,14 @@ class CurrencyService
         );
     }
 
+
+    public function getAllCurrencyForAvailableDate(int $todayTimestamp): array
+    {
+        $currencyList = $this->currencyRepository->findBy(Currency::TABLE_NAME, ['date' => $todayTimestamp]);
+        if (empty($currencyList)) {
+            $this->getAllCurrencyForAvailableDate($todayTimestamp - 86400);
+        }
+        return $currencyList;
+    }
+
 }

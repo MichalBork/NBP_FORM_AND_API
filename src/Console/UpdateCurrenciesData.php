@@ -1,21 +1,15 @@
 <?php
 
-namespace Console;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Logger\Logger;
+use Service\CurrencyService;
 
-class UpdateCurrenciesData
-{
-
-
-    public function __construct()
-    {
-        $service = new \Service\CurrencyService();
-        try {
-            $service->setPresentValueForAllCurrencyFromNBP();
-        } catch (\Exception $e) {
-            Logger::log($e->getMessage(), Logger::EMERGENCY);
-        }
-    }
-
+$service = new CurrencyService();
+try {
+    $service->setPresentValueForAllCurrencyFromNBP();
+    echo "Data updated successfully";
+} catch (\Exception $e) {
+    Logger::log($e->getMessage(), Logger::EMERGENCY);
 }
+

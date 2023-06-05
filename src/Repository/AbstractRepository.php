@@ -69,6 +69,8 @@ abstract class AbstractRepository
         }
     }
 
+
+
     /**
      * @return \PDO
      */
@@ -76,7 +78,6 @@ abstract class AbstractRepository
     {
         try {
             $pdo = (new DatabaseConnection())->createConnection();
-            var_dump($pdo);
         } catch (\PDOException $e) {
 
             Logger::log($e->getMessage(), Logger::EMERGENCY);
