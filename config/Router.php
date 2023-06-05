@@ -2,7 +2,7 @@
 
 namespace config;
 
-use Http\Response\ResponseFactory;
+use App\Http\Response\ResponseFactory;
 
 
 class Router

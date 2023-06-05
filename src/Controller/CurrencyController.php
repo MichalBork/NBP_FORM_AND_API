@@ -1,9 +1,9 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
-use Http\Response\ResponseFactoryInterface;
-use Service\CurrencyService;
+use App\Http\Response\ResponseFactoryInterface;
+use App\Service\CurrencyService;
 
 class CurrencyController extends AbstractController
 {

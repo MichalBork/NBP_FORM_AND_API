@@ -1,10 +1,10 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
-use Http\Response\ResponseFactoryInterface;
-use Logger\Logger;
-use Service\TransactionService;
+use App\Http\Response\ResponseFactoryInterface;
+use App\Logger\Logger;
+use App\Service\TransactionService;
 
 class TransactionController extends AbstractController
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Logger;
+namespace App\Logger;
 
 
-use Trait\ConfigLoader;
+use App\Trait\ConfigLoader;
 
 class Logger implements LoggerInterface
 {

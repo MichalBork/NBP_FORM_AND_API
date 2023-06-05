@@ -1,11 +1,11 @@
 <?php
 
-namespace Service;
+namespace App\Service;
 
-use Entity\Currency;
-use Entity\Transaction;
-use Repository\CurrencyRepository;
-use Repository\TransactionRepository;
+use App\Entity\Currency;
+use App\Entity\Transaction;
+use App\Repository\CurrencyRepository;
+use App\Repository\TransactionRepository;
 
 class TransactionService
 {

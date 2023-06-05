@@ -3,7 +3,7 @@
 namespace config\Database;
 
 use Config\Database\DatabasePDOInterface;
-use Trait\ConfigLoader;
+use App\Trait\ConfigLoader;
 
 class DatabaseConnection implements DatabasePDOInterface
 {

@@ -5,11 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function createTableWithTransactions() {
+    const table = document.getElementById('transactions-table');
+
+    while (table.firstChild) {
+        table.firstChild.remove();
+    }
     fetch('/get-transactions')
         .then(response => response.json())
         .then(data => {
             const table = document.getElementById('transactions-table');
 
+            const headers = ['Wybrana waluta', 'Zapłacił', 'Waluta docelowa', 'Otrzymał', 'Data'];
+
+            const headerRow = document.createElement('tr');
+
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+
+            table.classList.add('table');
+            table.classList.add('table-striped');
+            table.classList.add('table-bordered');
+            table.appendChild(headerRow);
             data.data.forEach(item => {
                 const row = document.createElement('tr');
 
@@ -31,7 +50,7 @@ function createTableWithTransactions() {
                 row.appendChild(targetAmountCell);
 
                 const dateCell = document.createElement('td');
-                const date = new Date(item.date * 1000); // Konwersja czasu UNIX na datę
+                const date = new Date(item.date * 1000);
                 const formattedDate = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`;
                 dateCell.textContent = formattedDate;
                 row.appendChild(dateCell);
@@ -83,7 +102,9 @@ function sendRequestWithNewTransaction() {
         .then(data => {
             createTableWithTransactions();
 
-        })
+        }).catch(error => {
+        console.log(error);
+    })
 
 }
 const sendRequestButton = document.getElementById('sendTransaction');

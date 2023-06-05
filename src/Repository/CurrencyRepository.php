@@ -1,8 +1,8 @@
 <?php
 
-namespace Repository;
+namespace App\Repository;
 
-use Entity\Currency;
+use App\Entity\Currency;
 
 class CurrencyRepository extends AbstractRepository
 {

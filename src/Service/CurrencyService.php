@@ -1,13 +1,13 @@
 <?php
 
-namespace Service;
+namespace App\Service;
 
-use Entity\Currency;
+use App\Entity\Currency;
 use GuzzleHttp\Psr7\Request;
-use Http\Request\ApiClient;
-use Logger\Logger;
+use App\Http\Request\ApiClient;
+use App\Logger\Logger;
 use Psr\Http\Message\ResponseInterface;
-use Repository\CurrencyRepository;
+use App\Repository\CurrencyRepository;
 
 class CurrencyService
 {
@@ -70,8 +70,8 @@ class CurrencyService
         return new Currency(
             $currency['currency'],
             $currency['code'],
-            round($currency['bid'] * 100),
-            round($currency['ask'] * 100)
+            round($currency['ask'] * 100),
+            round($currency['bid'] * 100)
         );
     }
 

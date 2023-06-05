@@ -1,9 +1,9 @@
 <?php
 
-namespace Repository;
+namespace App\Repository;
 
 use Config\Database\DatabaseConnection;
-use Logger\Logger;
+use App\Logger\Logger;
 
 abstract class AbstractRepository
 {

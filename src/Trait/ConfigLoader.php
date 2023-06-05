@@ -1,6 +1,6 @@
 <?php
 
-namespace Trait;
+namespace App\Trait;
 
 trait ConfigLoader
 {

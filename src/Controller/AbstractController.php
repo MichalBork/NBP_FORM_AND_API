@@ -1,10 +1,10 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
 
-use http\Response\Response;
-use http\Response\ResponseFactoryInterface;
+use App\Http\Response\Response;
+use App\Http\Response\ResponseFactoryInterface;
 
 abstract class AbstractController
 {

@@ -2,8 +2,8 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use Logger\Logger;
-use Service\CurrencyService;
+use App\Logger\Logger;
+use App\Service\CurrencyService;
 
 $service = new CurrencyService();
 try {

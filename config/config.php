@@ -7,13 +7,12 @@ return [
     "database" => [
         "host" => "db",
         "driver" => "mysql",
-        "dbname" => "",
-        "user" => "",
-        "password" => "",
+        "dbname" => "nbp",
+        "user" => "root",
+        "password" => "root",
 
     ]
 ];
-
 //CREATE TABLE Currencies (
 //    id INT PRIMARY KEY AUTO_INCREMENT,
 //    name VARCHAR(255),

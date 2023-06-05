@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Request;
+namespace App\Http\Request;
 
 use GuzzleHttp\Psr7\Response;
 use HttpException;
